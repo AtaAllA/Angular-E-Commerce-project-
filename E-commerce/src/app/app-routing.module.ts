@@ -2,9 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { AddProductComponent } from './add-product/add-product.component';
+import { LoginComponent } from './login/login.component';
 import { NotfoundComponent } from './notfound/notfound.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductListComponent } from './product-list/product-list.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
@@ -19,6 +21,17 @@ const routes: Routes = [
     path : "add-product", 
     component : AddProductComponent
   } , 
+
+  {
+    path : "register", 
+    component : RegisterComponent
+  },
+{
+  path : "login", 
+  component : LoginComponent
+  },
+
+
   {
     path : "product-details/:id", 
     component : ProductDetailsComponent
