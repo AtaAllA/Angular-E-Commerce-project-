@@ -14,6 +14,23 @@
             <small class="text-muted">{{product.createdAt | date}}</small>
         </div>
 
+        <ng-template [ngIf]="card.count>0" [ngIfElse]="loading">
+ <div class="text-success">
+  instock
+ </div>
+</ng-template>
+
+<ng-template #loading>
+ <div class="text-danger">outofsock</div>
+</ng-template>
+                    <div class="product-button-group">
+                        <a class="product-like-icon" href="#"><i class="fas fa-heart"></i></a>
+                        <a class="add-to-cart" href="#"><i class="fa fa-shopping-bag"></i>ADD TO CART</a>
+
+                        <a class="product-compare-icon" href="#"><i class="fas fa-random"></i></a>
+
+                      </div>
+
         <button class="btn btn-primary" (click) ="redirectToDetails()" > Show details </button>
 
     </div>
