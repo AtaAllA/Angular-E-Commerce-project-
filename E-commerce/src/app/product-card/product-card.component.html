@@ -1,37 +1,18 @@
-<div class="col">
-    <div class="card h-100">
-        <img [src]="product.image" class="card-img-top" alt="...">
-        <div class="card-body">
-            <h5 class="card-title">{{product.name}}</h5>
-            <p class="card-text"> {{product.description}}</p>
-
-            <p [ngStyle]="{'color': product.count? 'green' : 'red' }" >{{product.count > 0 ? 'instock: ' + product.count : 'outstock'}}</p>
-
-            <h3>{{product.price}}</h3>
-
-        </div>
-        <div class="card-footer">
-            <small class="text-muted">{{product.createdAt | date}}</small>
-        </div>
-
-        <ng-template [ngIf]="card.count>0" [ngIfElse]="loading">
- <div class="text-success">
-  instock
- </div>
-</ng-template>
-
-<ng-template #loading>
- <div class="text-danger">outofsock</div>
-</ng-template>
-                    <div class="product-button-group">
-                        <a class="product-like-icon" href="#"><i class="fas fa-heart"></i></a>
-                        <a class="add-to-cart" href="#"><i class="fa fa-shopping-bag"></i>ADD TO CART</a>
-
-                        <a class="product-compare-icon" href="#"><i class="fas fa-random"></i></a>
-
-                      </div>
-
-        <button class="btn btn-primary" (click) ="redirectToDetails()" > Show details </button>
-
+<div class="card p-2" style="width: 18rem;">
+    <img [src]="product.image" class="card-img-top" alt="...">
+    <div class="card-body" >
+      <h5 class="card-title">{{product.title}}</h5>
+      <p class="card-text">{{product.description}}</p>
+  
+      <p [ngStyle]="{'color': product.count? 'green' : 'red' }" >{{product.rate > 0 ? 'instock: ' + product.rate : 'outstock'}}</p>
+  
+      <h3>{{ product.price | currency:"EGP"}}</h3>
+      <div class="d-flex my-5 gap-5">
+        <button class="btn btn-danger"  (click)="decreaseCounter()">-</button>
+        <h3>{{ productCounter }}</h3>
+        <button class="btn btn-success" (click)="increaseCounter()" >+</button>
+        <button class="btn btn-success" (click)="addToCart()" >Add to Cart</button>
+      </div>
+      <a [routerLink]="['details', product.id]"  class="btn btn-primary">view</a>
     </div>
-</div>
+  </div>

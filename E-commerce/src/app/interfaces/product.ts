@@ -1,14 +1,9 @@
 export interface Product {
 
-    "createdAt":string,
-      "name":string,
-      "image":string,
-      "rate":number,
-      "count":number,
-      "description":string,
-      "price":number,
-      "reviews":[
-         string
-      ],
-      "id":number
+   id: string;
+   title: string;
+   price: string;
+   category: string;
+   description: string;
+   image: string;
 }

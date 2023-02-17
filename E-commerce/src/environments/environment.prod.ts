@@ -1,3 +1,4 @@
 export const environment = {
-  product: true
+  production: true,
+  baseURL : 'http://dev.production.com/'
 };

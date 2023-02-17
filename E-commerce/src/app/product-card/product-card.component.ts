@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Product } from '../interfaces/product';
+import { ActivatedRoute } from '@angular/router';
+import { CounterService } from '../services/counter.service';
+import { CartListService } from '../services/cart.service';
 
 @Component({
   selector: 'app-product-card',
@@ -7,30 +10,54 @@ import { Router } from '@angular/router';
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent implements OnInit {
-  @Input() product = {
-    createdAt:"",
-      name:"",
-      image:"",
-      rate:6,
-      count:20,
-      description:"",
-      price:0,
-      reviews:[
-         ""
-      ],
-      id:0
-    
-  }
+  counter = 0;
 
-  constructor(private router : Router){
+  productCounter = 0;
 
-  }
+  @Input() product: Product = {
+    id: '',
+    title: '',
+    price: '',
+    category: '',
+    description: '',
+    image: '',
+  };
+
+  constructor(
+    // private router : Router,
+    private counterService: CounterService,
+    private sendProduct: CartListService
+  ) {}
+
   ngOnInit(): void {
-    
+    this.counterService.counterVal.subscribe((res) => (this.counter = res));
   }
 
-  redirectToDetails(){
-    this.router.navigate(['/product-details' , this.product.id])
+  increaseCounter() {
+    this.productCounter++;
+    this.counterService.updateCounter(++this.counter);
+  }
 
+  decreaseCounter() {
+    this.productCounter--;
+    this.counterService.updateCounter(--this.counter);
+  }
+
+  addToCart() {
+    this.sendProduct.getCartItem(this.product);
   }
 }
+
+
+//   constructor(private router : Router){
+
+//   }
+//   ngOnInit(): void {
+    
+//   }
+
+//   redirectToDetails(){
+//     this.router.navigate(['/product-details' , this.product.id])
+
+//   }
+// }
