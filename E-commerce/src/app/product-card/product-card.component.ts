@@ -10,9 +10,8 @@ import { CartService } from '../services/cart.service';
   styleUrls: ['./product-card.component.css']
 })
 export class ProductCardComponent implements OnInit {
-  counter = 0;
-
   productCounter = 0;
+  counter = 0;
 
   @Input() product: Product = {
     id: '',
@@ -25,8 +24,8 @@ export class ProductCardComponent implements OnInit {
 
   constructor(
     // private router : Router,
-    private counterService: CounterService,
-    private sendProduct: CartService
+    private counterService: CounterService, private sendProduct: CartService
+
   ) {}
 
   ngOnInit(): void {
